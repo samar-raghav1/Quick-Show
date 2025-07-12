@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Seatlayout = () => {
+function Seatlayout() {
   return (
     <div>
       
