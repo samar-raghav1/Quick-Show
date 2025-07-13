@@ -12,7 +12,7 @@ import { Toaster } from "react-hot-toast"
 import Footer from "./components/Footer"
 
 const App = () => {
-  const isAdminRoute=useLocation().pathname.startsWith('/admin')
+  const isAdminRoute=useLocation().pathname.startsWith('/')
   return (
     <>
     <Toaster/>
