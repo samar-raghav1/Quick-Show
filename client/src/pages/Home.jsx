@@ -1,14 +1,14 @@
 import React from 'react'
 import HeroSection from '../components/HeroSection'
-import Navbar from '../components/Navbar'
 import FeaturedSection from '../components/FeaturedSection'
+import TrailerSection from '../components/TrailerSection'
 
 const Home = () => {
   return (
    <>
-   <Navbar/>
    <HeroSection/>
    <FeaturedSection/>
+   <TrailerSection/>
    </>
   )
 }
