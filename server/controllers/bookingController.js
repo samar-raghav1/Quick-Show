@@ -2,6 +2,7 @@
 import stripe from "stripe";
 import Booking from "../models/Booking.js";
 import Show from "../models/Show.js"
+import { inngest } from "../inngest/index.js";
 
 
 const checkSeatsAvailability = async(showId , selectedSeats) =>{
@@ -72,7 +73,14 @@ export const createBooking = async()=>{
             expires_at:Math.floor(Date.now()/1000)+30*60,
         })
         booking.paymentLink=session.url
-        await booking.save()
+        await booking.save();
+
+        await inngest.send({
+            name:'app/checkpayment',
+            date:{
+                bookingId:booking._id.toString()
+            }
+        })
 
         res.json({success:true, url:session.url})
     } catch (error) {
