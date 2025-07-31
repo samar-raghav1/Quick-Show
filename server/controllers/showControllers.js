@@ -1,6 +1,7 @@
 import axios from "axios";
 import Movie from "../models/Movie.js";
 import Show from "../models/Show.js";
+import { inngest } from "../inngest/index.js";
 // import { getShows } from './showControllers';
 
 // API to now playing movies from tmdb api
@@ -76,7 +77,10 @@ export const addShow = async (req, res) => {
     if (showToCreate.length > 0) {
       await Show.insertMany(showToCreate);
     }
-
+     await inngest.send({
+      name:'app/show.added',
+      data:{movieTitle:movie.title}
+     })
     res.json({ success: true, message: "Show added succesfully" });
   } catch (error) {
     console.log(error);
