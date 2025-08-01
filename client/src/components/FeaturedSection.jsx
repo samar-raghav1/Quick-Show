@@ -2,7 +2,6 @@ import { ArrowRight } from 'lucide-react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import BlurCircle from './BlurCircle'
-import { dummyShowsData } from '../assets/assets'
 import MovieCard from './MovieCard'
 import { useAppContext } from '../context/AppContext'
 
@@ -23,12 +22,14 @@ const FeaturedSection = () => {
             <MovieCard key={show._id} movie={show}/>
         ))}
       </div>
-      <div className='flex justify-center mt-20'>
+      {!shows ?(<div className='flex justify-center mt-20'>
         <button onClick={()=>{navigate('/movies'); scrollTo(0,0)}} className='px-10 py-3 text-sm bg-primary hover:bg-primary-dull transition rounded-md
         font-medium cursor-pointer'>
             Show More
         </button>
-      </div>
+      </div>):(
+        <h1 className='text-3xl font-bold text-center'>No Show Streaming</h1>
+      )}
     </div>
   )
 }
