@@ -52,7 +52,7 @@ const AddShows = () => {
         showsInput,
         showPrice:Number(showPrice)
       }
-      const {data}=await axios.get('/api/shoe/add',payLoad,{
+      const {data}=await axios.get('/api/show/add',payLoad,{
         headers:{Authorization:`Bearer ${await getToken()}`}})
 
         if(data.success){
