@@ -22,14 +22,12 @@ const FeaturedSection = () => {
             <MovieCard key={show._id} movie={show}/>
         ))}
       </div>
-      {!shows ?(<div className='flex justify-center mt-20'>
+     <div className='flex justify-center mt-20'>
         <button onClick={()=>{navigate('/movies'); scrollTo(0,0)}} className='px-10 py-3 text-sm bg-primary hover:bg-primary-dull transition rounded-md
         font-medium cursor-pointer'>
             Show More
         </button>
-      </div>):(
-        <h1 className='text-3xl font-bold text-center'>No Show Streaming</h1>
-      )}
+      </div>
     </div>
   )
 }
