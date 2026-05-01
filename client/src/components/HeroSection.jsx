@@ -25,7 +25,7 @@ const HeroSection = () => {
       </p>
       <button onClick={()=>navigate('/movies')} className='flex items-center gap-1 px-6 py-3 text-sm bg-primary
        hover:bg-primary-dull transition rounded-full font-medium cursor-pointer'>
-        Explore Movies 
+        Explore Movies
         <ArrowRight className="w-5 h-5" />
       </button>
     </div>

@@ -1,6 +1,6 @@
 
 import  Home  from "./pages/Home"
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Routes,Route, useLocation } from 'react-router-dom'
 import Movies from "./pages/Movies"
 import MovieDetails from "./pages/MovieDetails"
@@ -21,6 +21,25 @@ import { SignIn } from "@clerk/clerk-react"
 const App = () => {
   const isAdminRoute=useLocation().pathname.startsWith('/admin')
   const {user}=useAppContext()
+
+   useEffect(() => {
+    window.googleTranslateElementInit = function () {
+      new window.google.translate.TranslateElement(
+        {
+          pageLanguage: 'en',
+          includedLanguages: 'hi,en,bn,gu,hn,or,sd,ta,te,pa,sa',
+        },
+        'google_translate_element'
+      )
+    }
+    const script = document.createElement('script')
+    script.src =
+      'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+    document.body.appendChild(script)
+    },[])
+  
+
+
   return (
     <>
     <Toaster/>
