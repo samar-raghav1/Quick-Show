@@ -28,7 +28,9 @@ pipeline {
         )]) {
           echo '$DOCKER_USER'
 
-          sh 'docker login -u $DOCKER_USER --password-stdin'
+          sh """
+              echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin
+            """
 
           sh 'docker tag quick-client:latest ${DOCKER_USER}/quick-client:latest'
 
