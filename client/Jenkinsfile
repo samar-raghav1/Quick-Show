@@ -15,8 +15,8 @@ pipeline {
         steps{
           echo 'pushing image to docker hub'
           withCredentials([usernamePassword(
-            credentialsId: 'dockerhub-creds'
-            usernameVariable:'DOCKER_USER'
+            credentialsId: 'dockerhub-creds',
+            usernameVariable:'DOCKER_USER',
             passwordVariable:'DOCKER_PASS '  )]){
             sh 'echo $DOCKER_USER | docker login -u $DOCKER_USER --password-stdin'
             sh 'docker image tags quick-client:latest ${env.DOCKER_USER}/quick-client:latest'
