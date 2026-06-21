@@ -2,7 +2,7 @@ pipeline {
   agent any
   stages{
     stage('checkout'){
-      git clone url:"https://github.com/samar-raghav1/Quick-Show.git" , branch:"main"
+      git url:"https://github.com/samar-raghav1/Quick-Show.git" , branch:"main"
     }
       
     stage('build'){
