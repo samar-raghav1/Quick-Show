@@ -6,13 +6,15 @@
 ### Prerequisites
 - Node.js (>= 18.x)
 - npm or yarn
+- MongoDB (local or cloud, e.g. Atlas)
 
 ### Installation
 ```bash
-cd client
+cd server
 npm install
-# Development mode
-npm start
 
-# Production build
-npm run build
+# Development mode
+npm run dev
+
+# Production mode
+npm start
