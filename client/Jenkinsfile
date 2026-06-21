@@ -47,7 +47,7 @@ pipeline {
     
         sh 'ls -la'
         sh 'cd client'
-        sh 'docker compose down && docker compose up -d --build'
+        sh 'docker compose -f client/docker-compose.yaml down && docker compose -f client/docker-compose.yaml up -d --build'
       }
     }
 
