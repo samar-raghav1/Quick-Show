@@ -1,0 +1,31 @@
+pipeline {
+  agent any
+  stages{
+    stage('build'){
+      steps{
+        echo 'building docker' 
+        sh 'docker build -t quick-client .'
+        echo 'docker image build'
+      }
+      stage('push to docker hub'){
+        steps{
+          echo 'pushing image to docker hub'
+          withCredentials([usenamePassword(
+            credentialsId: 'dockerhub-creds'
+            usernameVariable:'DOCKER_USER'
+            passwordVariable:'DOCKER_PASS '  )]){
+            sh 'echo $DOCKER_USER | docker login -u $DOCKER_USER --password-stdin'
+            sh 'docker image tags quick-client:latest ${env.DOCKER_USER}/quick-client:latest'
+            sh 'dokcer push ${env.DOCKER_USER}/quick-client:latest'
+
+            echo I'mage Pushed'
+          }
+        }
+        stage('deploy'){
+          echo ' deploying image'
+          sh 'docker compose down && docker compose up -d  --build'
+        }
+            
+            
+    
+    
