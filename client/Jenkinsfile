@@ -55,6 +55,7 @@ pipeline {
       echo 'deployimg to kubernetes'
       sh 'kubectl create namespace quick-client'
       sh 'kubectl apply -f client/k8s/deployment.yml && kubectl apply -f client/k8s/service.yml'
+    }
       
 
   }
