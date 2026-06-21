@@ -1,0 +1,7 @@
+version: '3.9'
+
+services:
+  web:
+    image: quick-client:latest
+    ports:
+      - "80:80"
