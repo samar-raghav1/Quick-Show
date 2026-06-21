@@ -44,6 +44,8 @@ pipeline {
     stage('deploy') {
       steps {
         echo 'deploying image'
+        sh 'pwd'
+        sh 'ls -la'
         sh 'docker compose down && docker compose up -d --build'
       }
     }
