@@ -1,0 +1,7 @@
+version: '3.9'
+
+services:
+  web:
+    image: 'quick-server:latest'
+    ports:
+      - '3000:3000'
