@@ -54,11 +54,11 @@ pipeline {
       steps{
 
         
-          sh 'terraform -chdir=client init'
-          sh 'terraform -chdir=client plan'
-          sh 'terraform -chdir=client validate'
-          sh 'terraform -chdir=client apply'
-          sh 'terraform -chdir=client destroy'
+          sh 'terraform -chdir=client/terraform init'
+          sh 'terraform -chdir=client/terraform plan'
+          sh 'terraform -chdir=client/terraform validate'
+          sh 'terraform -chdir=client/terraform apply'
+          sh 'terraform -chdir=client/terraform destroy'
       }
     }
     
