@@ -50,7 +50,13 @@ pipeline {
         sh 'docker compose -f client/docker-compose.yaml down && docker compose -f client/docker-compose.yaml up -d --build'
       }
     }
-
+    stage("EKS terraform "){
+      steps{
+        sh 'terraform init'
+        sh 'terraform validate'
+        sh 'terraform plan'
+        sh 'terraform apply'
+        sh 'terraform destroy '
     
       
 
