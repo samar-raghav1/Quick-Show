@@ -1,6 +1,6 @@
 resource "aws_eks_cluster" "quickshow_cluster" {
     name     = "quickshow-cluster"
-    role_arn = aws_iam_role.eks_cluster_role.arn
+    role_arn = aws_iam_role.eks_role.arn
 
     vpc_config {
         subnet_ids = aws_subnet.eks_subnet[*].id
