@@ -53,12 +53,12 @@ pipeline {
     stage("EKS terraform "){
       steps{
 
-        sh '''cd ./client
-           terraform init
-           terraform validate
-           terraform plan
-           terraform apply
-           terraform destroy '''
+        
+          sh 'terraform -chdir=client init'
+          sh 'terraform -chdir=client plan'
+          sh 'terraform -chdir=client validate'
+          sh 'terraform -chdir=client apply'
+          sh 'terraform -chdir=client destroy'
       }
     }
     
