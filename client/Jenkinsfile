@@ -51,12 +51,7 @@ pipeline {
       }
     }
 
-    stage('deploy to kubernetes'){
-      steps{
-        echo 'deploying to kubernetes'
-        sh 'kubectl --kubeconfig=/home/samar-raghav/Desktop/kubernetes/kind-config.yaml apply -f client/k8s/deployment.yml && kubectl --kubeconfig=/home/samar-raghav/Desktop/kubernetes/kind-config.yaml apply -f client/k8s/service.yml'
-      }
-    }
+    
       
 
   }
