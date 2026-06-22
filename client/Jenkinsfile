@@ -53,7 +53,7 @@ pipeline {
     stage("EKS terraform "){
       steps{
 
-        cd ./client
+        sh 'cd ./client'
         sh 'terraform init'
         sh 'terraform validate'
         sh 'terraform plan'
