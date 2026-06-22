@@ -25,7 +25,7 @@ pipeline{
           passwordVariable: 'DOCKER_PASS')]){
           echo '${DOCKER_USER}'
 
-          sh ' echo "${DOCKER_USER}" | docker login -u "${DOCKER_USER}" --password-stdin'
+          sh ' echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin'
           sh ' docker tag quick-server:latest ${DOCKER_USER}/quick-server:latest'
           sh 'docker push ${DOCKER_USER}/quick-server:latest'
 
