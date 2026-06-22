@@ -52,7 +52,7 @@ pipeline {
     }
     stage("EKS terraform "){
       steps{
-        withCredentials([$class: 'AmazonWebServicesCredentialsBinding',
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',
                          credentialsId: 'AWS-creds'
                          ]]){
           sh 'terraform -chdir=client/terraform init'
