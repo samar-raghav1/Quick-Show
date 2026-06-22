@@ -1,0 +1,45 @@
+pipeline{
+  agent any
+  stages{
+    stage('checkout'){
+      steps{
+        echo 'github cloning'
+        git 'https://github.com/samar-raghav1/Quick-Show.git' , branch:'main'
+      }
+    }
+    stage('build docker image'){
+      steps{
+        echo 'building docker image'
+
+        sh 'docker build -t quick-server ./server'
+        echo 'docker image build'
+        
+      }
+    }
+    stage('push to dockerhub'){
+      steps{
+        echo 'pushing image to docker hub '
+        withCredentials([usernamePassword(
+          credentialsId: 'dockerhub-creds',
+          usernameVariable: 'DOCKER_USER',
+          passwordVariable: 'DOCKER_PASS')]){
+          echo '${DOCKER_USER}'
+
+          sh ' echo "${DOCKER_USER}" | docker login -u "${DOCKER_USER}" --password-stdin'
+          sh ' docker tag quick-server:latest ${DOCKER_USER}/quick-server:latest'
+          sh 'docker push ${DOCKER_USER}/quick-server:latest'
+
+          echo 'Image pushed'
+        }
+      }
+    }
+    stage('deploy'){
+      steps{
+        sh 'docker compose -f server/docker-compose.yaml down && docker compose -f server/docker-compose.yaml up -d --build'
+        echo 'deployed successfully '
+      }
+    }
+  }
+}
+        
+    
