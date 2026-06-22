@@ -22,3 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+client/k8s/deployment.yml
+client/k8s/service.yml
