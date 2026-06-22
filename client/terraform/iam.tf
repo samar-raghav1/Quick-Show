@@ -1,4 +1,4 @@
-resource "aws_iam_policy_document" "eks_assume" {
+data "aws_iam_policy_document" "eks_assume" {
     statement {
         actions =["sts:AssumeRole"]
         principals {
@@ -7,7 +7,7 @@ resource "aws_iam_policy_document" "eks_assume" {
         }
     }
 }
-resource "aws_iam_policy_document" "eks_node_assume" {
+data "aws_iam_policy_document" "eks_node_assume" {
     statement {
         actions= ["sts:AssumeRole"]
         principals {
