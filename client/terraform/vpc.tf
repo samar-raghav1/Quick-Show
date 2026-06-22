@@ -9,7 +9,7 @@ resource "aws_vpc" "eks_vpc" {
     resource "aws_subnet" "eks_subnet" {
         count = 2
         vpc_id =aws_vpc.eks_vpc.id
-        cidr_block = cidr_subnet(aws_vpc.eks_vpc.cidr_block,8 , count.index)
+        cidr_block = cidrsubnet(aws_vpc.eks_vpc.cidr_block,8 , count.index)
         availability_zone = "us-east-1${count.index +1}"
         map_public_ip_on_launch= true
         tags = {
