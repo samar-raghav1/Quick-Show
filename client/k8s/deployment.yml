@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quick-client-deployment
+  namespace: quick-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quick-client
+  template:
+    metadata:
+      labels:
+        app: quick-client
+    spec:
+      containers:
+      - name: quick-client
+        image: quick-client:latest
+        ports:
+        - containerPort: 80
