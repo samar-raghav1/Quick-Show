@@ -45,3 +45,5 @@ Thumbs.db
 # MongoDB dump or data
 dump/
 data/
+
+server/k8s-server/secrets.yml
